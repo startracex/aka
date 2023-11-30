@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AKA.中国</title>
+    <style>
+      body {
+        background: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      (async () => {
+        const { pathname } = location;
+        await fetch("/editme.json")
+          .then((res) => res.json())
+          .then((data) => {
+            let dataPathname = data[pathname] || data[pathname.slice(1)];
+            if (dataPathname) {
+              window.location.pathname = dataPathname;
+            }
+          });
+      })();
+    </script>
+  </body>
+</html>

@@ -17,9 +17,12 @@
         await fetch("/editme.json")
           .then((res) => res.json())
           .then((data) => {
-            let dataPathname = data[pathname] || data[pathname.slice(1)];
-            if (dataPathname) {
-              window.location.href = dataPathname;
+            let jump = data[pathname] || data[pathname.slice(1)];
+            if (jump) {
+              if (!jump.startsWith("http:")) {
+                jump = "https:" + jump;
+              }
+              location.replace(jump);
             }
           });
       })();

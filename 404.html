@@ -19,7 +19,7 @@
           .then((data) => {
             let dataPathname = data[pathname] || data[pathname.slice(1)];
             if (dataPathname) {
-              window.location.pathname = dataPathname;
+              window.location.href = dataPathname;
             }
           });
       })();

@@ -19,6 +19,9 @@
           .then((data) => {
             let jump = data[pathname] || data[pathname.slice(1)];
             if (jump) {
+              if (!jump.startsWith("//")) {
+                jump = "//" + jump;
+              }
               if (!jump.startsWith("http:")) {
                 jump = "https:" + jump;
               }
